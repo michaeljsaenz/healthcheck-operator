@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- check_v1alpha1_probe.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples
