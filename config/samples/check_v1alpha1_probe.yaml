@@ -4,6 +4,21 @@ metadata:
   labels:
     app.kubernetes.io/name: healthcheck-operator
     app.kubernetes.io/managed-by: kustomize
-  name: probe-sample
+  name: probe-sample-200
 spec:
-  # TODO(user): Add fields here
+  type: http
+  version: v1
+  url: http://httpbin.org/status/200
+---
+apiVersion: check.x-health.io/v1alpha1
+kind: Probe
+metadata:
+  labels:
+    app.kubernetes.io/name: healthcheck-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: probe-sample-503
+  namespace: testing
+spec:
+  type: http
+  version: v1
+  url: http://httpbin.org/status/503

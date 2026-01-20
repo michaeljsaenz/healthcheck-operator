@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-manager
+spec:
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/manager.check_names: '["openmetrics"]'
+        ad.datadoghq.com/manager.init_configs: '[{}]'
+        ad.datadoghq.com/manager.instances: |
+          [
+            {
+              "prometheus_url": "https://%%host%%:8443/metrics",
+              "namespace": "healthcheck",
+              "metrics": ["*"],
+              "ssl_verify": false,
+              "bearer_token_auth": true
+            }
+          ]

@@ -9,3 +9,10 @@ resources:
 #  - path: monitor_tls_patch.yaml
 #    target:
 #      kind: ServiceMonitor
+patches:
+- target:
+    kind: ServiceMonitor
+  patch: |-
+    - op: add
+      path: /metadata/labels/prometheus
+      value: scraped
